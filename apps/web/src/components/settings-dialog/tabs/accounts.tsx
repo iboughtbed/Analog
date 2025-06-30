@@ -237,7 +237,7 @@ function AccountListItem({ account }: AccountListItemProps) {
   );
 
   const handleDisconnect = () => {
-    mutation.mutate({ id: account.id, providerId: account.providerId });
+    mutation.mutate({ id: account.accountId, providerId: account.providerId });
   };
 
   return (

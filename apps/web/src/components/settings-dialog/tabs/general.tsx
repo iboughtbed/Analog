@@ -98,14 +98,14 @@ function StartOfWeekPicker() {
         Start of week
       </Label>
       <Select
-        value={weekDays[calendarSettings.weekStartsOn]}
+        value={weekDays[calendarSettings.weekStartsOn - 1]}
         onValueChange={(value: string) => {
           const dayNumber = weekDays.indexOf(
             value as (typeof weekDays)[number],
           );
           setCalendarSettings((prev) => ({
             ...prev,
-            weekStartsOn: dayNumber as 0 | 1 | 2 | 3 | 4 | 5 | 6,
+            weekStartsOn: dayNumber as 1 | 2 | 3 | 4 | 5 | 6 | 7,
           }));
         }}
       >
