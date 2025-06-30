@@ -16,7 +16,13 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -33,14 +39,6 @@ export function NavUser() {
 
   const { data: user, isLoading } = useCurrentUser();
   const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  };
 
   if (isLoading) {
     return <NavUserSkeleton />;
@@ -107,10 +105,35 @@ export function NavUser() {
               <AddAccountDialog>
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
                   <Plus />
-                  Add account
+                  Connect an account
                 </DropdownMenuItem>
               </AddAccountDialog>
             </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger className="ps-8">
+                Theme
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent className="min-w-64">
+                  <DropdownMenuRadioGroup
+                    value={theme}
+                    onValueChange={setTheme}
+                  >
+                    <DropdownMenuRadioItem value="system">
+                      Automatic (system)
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="light">
+                      Light
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="dark">
+                      Dark
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={async () =>
                 await authClient.signOut({
@@ -126,11 +149,6 @@ export function NavUser() {
               <LogOut />
               Log out
             </DropdownMenuItem>
-            {/* <DropdownMenuItem onClick={toggleTheme}>
-              <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-              App theme
-            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
