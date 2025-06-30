@@ -54,7 +54,7 @@
         "@trpc/server": "^11.4.2",
         "@trpc/tanstack-react-query": "^11.4.2",
         "ai": "^4.3.16",
-        "better-auth": "^1.2.10",
+        "better-auth": "^1.2.12",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "cmdk": "^1.1.1",
@@ -118,7 +118,7 @@
       },
       "peerDependencies": {
         "@trpc/server": "^11.4.2",
-        "better-auth": "1.2.9-beta.8",
+        "better-auth": "1.2.12",
         "next": "^15.3.2",
         "server-only": "^0.0.1",
         "superjson": "^2.2.2",
@@ -141,7 +141,7 @@
         "typescript": "^5.8.3",
       },
       "peerDependencies": {
-        "better-auth": "1.2.9-beta.8",
+        "better-auth": "1.2.12",
         "server-only": "^0.0.1",
       },
     },
